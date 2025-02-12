@@ -1,19 +1,36 @@
-import { useTasks } from "../context/TaskContext";
-import TaskItem from "./TaskItem";
-import "../App.css";
+import { useTasks } from "../context/TaskContext"; // Hook personalizado para acessar o contexto de tarefas
+import TaskItem from "./TaskItem"; // Componente que representa um item individual na lista de tarefas
+import "../App.css"; // Importa os estilos globais
 
+/**
+ * Componente `TaskList` que exibe uma lista de tarefas filtradas.
+ * Este componente permite visualizar, filtrar e interagir com as tarefas.
+ */
 export default function TaskList() {
-  // Extrai tasks, filter  e setFilter do contexto
+  /**
+   * Extrai os valores `tasks`, `filter` e `setFilter` do contexto global de tarefas.
+   * - `tasks`: Lista de todas as tarefas.
+   * - `filter`: Filtro atual ('all', 'active', 'completed').
+   * - `setFilter`: Função para alterar o filtro.
+   */
   const { tasks, filter, setFilter } = useTasks();
 
-  // Filtra as tarefas com base no filtro selecionado
+  /**
+   * Filtra as tarefas com base no filtro selecionado.
+   * - Se o filtro for 'completed', retorna apenas as tarefas concluídas.
+   * - Se o filtro for 'active', retorna apenas as tarefas pendentes.
+   * - Se o filtro for 'all', retorna todas as tarefas.
+   */
   const filteredTasks = tasks.filter((task) => {
     if (filter === "completed") return task.completed; // Mostra apenas tarefas concluídas
     if (filter === "active") return !task.completed; // Mostra apenas tarefas pendentes
     return true; // Mostra todas as tarefas
   });
 
-  // Retorna o JSX da lista de tarefas
+  /**
+   * Retorna o JSX da lista de tarefas.
+   * O componente inclui botões de filtro e uma lista de tarefas filtradas.
+   */
   return (
     <div className="container">
       {/* Container para os botões de filtro */}

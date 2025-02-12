@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+```markdown
+# 📋 Gerenciador de Tarefas (To-Do List)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O **Gerenciador de Tarefas** é uma aplicação web simples e responsiva para gerenciar tarefas diárias. Com ele, você pode criar, visualizar, editar, concluir e excluir tarefas. A aplicação também inclui recursos como filtros para exibir tarefas concluídas, pendentes ou todas, além de detalhes adicionais sobre cada tarefa.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 📦 Estrutura do Projeto
 
-### `npm start`
+```plaintext
+public/
+└── index.html              # Página HTML principal
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+src/
+├── components/             # Componentes reutilizáveis
+│   ├── Header.jsx          # 🎯 Cabeçalho da aplicação
+│   ├── TaskForm.jsx        # 📝 Formulário para adicionar/editar tarefas
+│   ├── TaskItem.jsx        # ✔️ Item individual da lista de tarefas
+│   └── TaskList.jsx        # 📋 Lista de tarefas filtradas
+├── context/                
+│   └── TaskContext.js      # 🌐 Contexto global para gerenciamento de estado
+├── pages/                  # 🖥️ Páginas da aplicação
+│   ├── Home.jsx            # 🏠 Página inicial
+│   └── TaskDetails.jsx     # 🔍 Página de detalhes de uma tarefa
+├── services/               
+│   └── api.js              # 🌍 Configuração da API (axios/fetch)
+├── App.css                 # 🎨 Estilos globais
+├── App.js                  # ⚛️ Componente principal
+├── App.test.js             # 🧪 Testes do componente App
+├── index.css               # 🖌️ Estilos adicionais
+├── index.js                # 🚀 Ponto de entrada da aplicação
+├── reportWebVitals.js      # 📊 Métricas de desempenho
+└── setupTests.js           # ⚙️ Configuração de testes (Jest/React Testing Library)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Raiz do Projeto:
+├── db.json                 # 🗃️ Banco de dados local (JSON Server)
+├── package-lock.json       # 🔒 Versões exatas de dependências
+├── package.json            # 📦 Metadados e dependências do projeto
+└── README.md               # 📖 Documentação
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Como Executar o Projeto
 
-### `npm run build`
+### Pré-requisitos
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (versão 16 ou superior)
+- npm ou yarn instalado
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Passos para Execução
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone o Repositório**
+   ```bash
+   git clone https://github.com/seu-usuario/nome-do-projeto.git
+   cd nome-do-projeto
+   ```
 
-### `npm run eject`
+2. **Instale as Dependências**
+   Execute o seguinte comando para instalar todas as dependências necessárias:
+   ```bash
+   npm install react-router-dom axios json-server lucide-react
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. **Inicie o Banco de Dados (JSON Server)**
+   Para simular um backend RESTful, inicie o servidor JSON com o seguinte comando:
+   ```bash
+   npx json-server --watch db.json --port 3001
+   ```
+   - Certifique-se de que o arquivo `db.json` existe na raiz do projeto. Ele deve conter uma estrutura inicial como esta:
+     ```json
+     {
+       "todos": []
+     }
+     ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Inicie o Servidor de Desenvolvimento**
+   Em outro terminal, execute o seguinte comando para iniciar a aplicação React:
+   ```bash
+   npm start
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+5. **Acesse a Aplicação**
+   Abra o navegador e acesse: [http://localhost:3000](http://localhost:3000)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🌟 Como Usar a Aplicação
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. **Adicionar uma Nova Tarefa**:
+   - Na página inicial, insira o título da tarefa no campo de texto e clique em "Adicionar Tarefa".
+   - Observações podem ser adicionadas ao editar a tarefa.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. **Marcar como Concluída**:
+   - Clique na caixa de seleção ao lado da tarefa para marcá-la como concluída.
 
-### Code Splitting
+3. **Editar uma Tarefa**:
+   - Clique no ícone de edição (lápis) para alterar o título ou adicionar observações.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+4. **Excluir uma Tarefa**:
+   - Clique no ícone de lixeira para remover uma tarefa.
 
-### Analyzing the Bundle Size
+5. **Filtrar Tarefas**:
+   - Use os botões "Todas", "Pendentes" ou "Concluídas" para filtrar a lista de tarefas.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+6. **Visualizar Detalhes**:
+   - Clique no título de uma tarefa para acessar sua página de detalhes.
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---

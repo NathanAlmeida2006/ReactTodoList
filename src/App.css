@@ -1,324 +1,358 @@
-/* Reset & Global Styles */
+/* 
+  ==============================
+  RESET & GLOBAL STYLES
+  ==============================
+  Define variáveis globais e estilos básicos para garantir consistência.
+*/
 :root {
-  --primary: #4F46E5;
-  --primary-hover: #4338CA;
-  --secondary: #6366F1;
-  --background: #F8FAFC;
-  --surface: #FFFFFF;
-  --text: #1E293B;
-  --text-muted: #64748B;
-  --border: #E2E8F0;
-  --success: #10B981;
-  --warning: #F59E0B;
-  --error: #EF4444;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  /* Cores principais */
+  --primary: #6366F1; /* Cor primária (ex.: botões, títulos) */
+  --primary-hover: #4F46E5; /* Cor primária ao passar o mouse */
+  --secondary: #818CF8; /* Cor secundária */
+  --background: #F9FAFB; /* Fundo da página */
+  --surface: #FFFFFF; /* Fundo de superfícies (ex.: cards, modais) */
+  --text: #111827; /* Cor do texto principal */
+  --text-muted: #6B7280; /* Cor do texto secundário ou desabilitado */
+  --border: #E5E7EB; /* Cor das bordas */
+
+  /* Cores de status */
+  --success: #34D399; /* Sucesso (ex.: tarefa concluída) */
+  --warning: #FBBF24; /* Aviso (ex.: tarefa pendente) */
+  --error: #F87171; /* Erro (ex.: falha ao salvar) */
+
+  /* Sombras */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* Sombra pequena */
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1); /* Sombra média */
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1); /* Sombra grande */
 }
 
+/* Reset global */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0; /* Remove margens padrão */
+  padding: 0; /* Remove preenchimentos padrão */
+  box-sizing: border-box; /* Garante que as bordas e paddings não aumentem o tamanho dos elementos */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Define uma fonte moderna e legível */
 }
 
+/* Estilo básico do corpo da página */
 body {
-  background: var(--background);
-  color: var(--text);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
+  background: var(--background); /* Define o fundo da página */
+  color: var(--text); /* Define a cor do texto principal */
+  min-height: 100vh; /* Garante que o corpo ocupe toda a altura da viewport */
+  line-height: 1.5; /* Espaçamento entre linhas para melhor legibilidade */
 }
 
-/* Main Container */
+/*
+  ==============================
+  HEADER
+  ==============================
+  Estiliza o cabeçalho da aplicação.
+*/
+.app-header {
+  background: var(--surface); /* Fundo claro para o cabeçalho */
+  padding: 1.5rem 0; /* Espaçamento interno */
+  box-shadow: var(--shadow-sm); /* Sombra leve para destacar o cabeçalho */
+  border-bottom: 1px solid var(--border); /* Borda inferior para separar do conteúdo */
+  margin-bottom: 2rem; /* Espaço abaixo do cabeçalho */
+}
+
+.app-title {
+  font-size: 1.875rem; /* Tamanho do título */
+  font-weight: 700; /* Negrito para destaque */
+  color: var(--primary); /* Cor primária para o título */
+  text-align: center; /* Centraliza o texto */
+  letter-spacing: -0.025em; /* Ajusta o espaçamento entre letras */
+}
+
+/*
+  ==============================
+  CONTAINER
+  ==============================
+  Centraliza o conteúdo na tela.
+*/
 .container {
-  background: var(--surface);
-  width: 100%;
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 2.5rem;
-  border-radius: 1.5rem;
-  box-shadow: var(--shadow-md);
+  max-width: 768px; /* Largura máxima para dispositivos maiores */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 0 1.5rem; /* Espaçamento lateral para dispositivos menores */
 }
 
-/* Header */
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
-  padding: 4rem 0;
-}
-
-.header h1 {
-  font-size: 2.75rem;
-  font-weight: 800;
-  color: var(--primary);
-  letter-spacing: -0.025em;
-  position: relative;
-  display: inline-block;
-}
-
-.header h1::after {
-  content: '';
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60%;
-  height: 4px;
-  background: var(--primary);
-  border-radius: 2px;
-}
-
-/* Task Form */
+/*
+  ==============================
+  TASK FORM
+  ==============================
+  Estiliza o formulário de adição de tarefas.
+*/
 .task-form {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 2.5rem;
-  position: relative;
+  background: var(--surface); /* Fundo claro */
+  padding: 1.5rem; /* Espaçamento interno */
+  border-radius: 1rem; /* Bordas arredondadas */
+  box-shadow: var(--shadow-md); /* Sombra para destacar o formulário */
+  margin-bottom: 2rem; /* Espaço abaixo do formulário */
+  display: flex; /* Layout flexível para alinhar os campos */
+  gap: 1rem; /* Espaçamento entre os campos */
 }
 
 .form-input {
-  flex: 1;
-  padding: 1rem 1.5rem;
-  border: 2px solid var(--border);
-  border-radius: 0.75rem;
-  font-size: 1rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: var(--surface);
+  flex: 1; /* O campo de entrada ocupa o espaço disponível */
+  padding: 0.75rem 1rem; /* Espaçamento interno */
+  border: 2px solid var(--border); /* Borda clara */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+  font-size: 1rem; /* Tamanho da fonte */
+  transition: all 0.2s ease; /* Transição suave para hover/focus */
 }
 
 .form-input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
-  outline: none;
+  outline: none; /* Remove o contorno padrão ao focar */
+  border-color: var(--primary); /* Altera a cor da borda */
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); /* Adiciona uma sombra sutil */
 }
 
 .form-button {
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  padding: 0 2rem;
-  border-radius: 0.75rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  background: var(--primary); /* Fundo da cor primária */
+  color: white; /* Texto branco */
+  font-weight: 600; /* Negrito para destaque */
+  padding: 0.75rem 1.5rem; /* Espaçamento interno */
+  border: none; /* Remove a borda */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de ponteiro */
+  transition: all 0.2s ease; /* Transição suave para hover */
 }
 
 .form-button:hover {
-  background: var(--primary-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
+  background: var(--primary-hover); /* Altera a cor ao passar o mouse */
+  transform: translateY(-1px); /* Efeito de elevação */
 }
 
-/* Filters */
+/*
+  ==============================
+  TASK LIST
+  ==============================
+  Estiliza a lista de tarefas.
+*/
+.task-list {
+  display: flex; /* Layout flexível */
+  flex-direction: column; /* Organiza os itens verticalmente */
+  gap: 1rem; /* Espaçamento entre as tarefas */
+}
+
+/*
+  ==============================
+  FILTERS
+  ==============================
+  Estiliza os botões de filtro.
+*/
 .filters {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 2rem;
+  display: flex; /* Layout flexível */
+  gap: 0.75rem; /* Espaçamento entre os botões */
+  margin-bottom: 1.5rem; /* Espaço abaixo dos filtros */
+  padding: 0.5rem; /* Espaçamento interno */
+  background: var(--surface); /* Fundo claro */
+  border-radius: 0.75rem; /* Bordas arredondadas */
+  box-shadow: var(--shadow-sm); /* Sombra leve */
 }
 
 .filter-button {
-  padding: 0.625rem 1.25rem;
-  border-radius: 0.75rem;
-  font-weight: 500;
-  cursor: pointer;
-  background: var(--surface);
-  border: 2px solid var(--border);
-  color: var(--text-muted);
-  transition: all 0.2s ease;
+  padding: 0.5rem 1rem; /* Espaçamento interno */
+  border: none; /* Remove a borda */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+  font-weight: 500; /* Negrito para destaque */
+  color: var(--text-muted); /* Cor do texto desativada */
+  background: transparent; /* Fundo transparente */
+  cursor: pointer; /* Cursor de ponteiro */
+  transition: all 0.2s ease; /* Transição suave para hover */
 }
 
 .filter-button:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+  color: var(--primary); /* Altera a cor ao passar o mouse */
 }
 
 .filter-button.active {
-  background: var(--primary);
-  color: #fff;
-  border-color: var(--primary);
+  background: var(--primary); /* Fundo da cor primária para o botão ativo */
+  color: white; /* Texto branco */
 }
 
-/* Task List */
-.task-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-/* Task Item */
+/*
+  ==============================
+  TASK ITEM
+  ==============================
+  Estiliza cada item da lista de tarefas.
+*/
 .task-item {
-  display: flex;
-  align-items: flex-start;
-  padding: 1.5rem;
-  background: var(--surface);
-  border-radius: 1rem;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.2s ease;
-  animation: fadeIn 0.3s ease forwards;
+  background: var(--surface); /* Fundo claro */
+  border-radius: 0.75rem; /* Bordas arredondadas */
+  padding: 1rem; /* Espaçamento interno */
+  display: flex; /* Layout flexível */
+  align-items: center; /* Alinha os itens verticalmente */
+  gap: 1rem; /* Espaçamento entre os elementos */
+  box-shadow: var(--shadow-sm); /* Sombra leve */
+  transition: all 0.2s ease; /* Transição suave para hover */
+  border: 1px solid var(--border); /* Borda clara */
 }
 
 .task-item:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Efeito de elevação */
+  box-shadow: var(--shadow-md); /* Sombra mais pronunciada */
 }
 
 .task-item.completed {
-  opacity: 0.7;
-  background: rgba(241, 245, 249, 0.5);
+  background: var(--background); /* Fundo mais claro para tarefas concluídas */
+  border-color: var(--border); /* Borda clara */
+}
+
+.task-item.completed .task-title {
+  color: var(--text-muted); /* Texto desativado */
+  text-decoration: line-through; /* Risca o texto para indicar conclusão */
 }
 
 .task-checkbox {
-  width: 1.25rem;
-  height: 1.25rem;
-  border: 2px solid var(--border);
-  border-radius: 0.375rem;
-  margin-right: 1rem;
-  margin-top: 0.25rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  width: 1.25rem; /* Largura do checkbox */
+  height: 1.25rem; /* Altura do checkbox */
+  border: 2px solid var(--border); /* Borda clara */
+  border-radius: 0.375rem; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de ponteiro */
+  transition: all 0.2s ease; /* Transição suave para hover */
 }
 
 .task-checkbox:checked {
-  background: var(--primary);
-  border-color: var(--primary);
+  background: var(--primary); /* Fundo da cor primária quando marcado */
+  border-color: var(--primary); /* Borda da cor primária */
 }
 
 .task-title {
-  flex: 1;
-  margin-right: 1rem;
-  font-size: 1rem;
-  line-height: 1.5;
+  flex: 1; /* O título ocupa o espaço disponível */
+  color: var(--text); /* Cor do texto principal */
+  text-decoration: none; /* Remove sublinhado */
+  font-weight: 500; /* Negrito para destaque */
 }
 
 .task-actions {
-  display: flex;
-  gap: 0.5rem;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.task-item:hover .task-actions {
-  opacity: 1;
+  display: flex; /* Layout flexível */
+  gap: 0.5rem; /* Espaçamento entre as ações */
 }
 
 .icon-button {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  color: var(--text-muted);
-  transition: all 0.2s ease;
+  padding: 0.5rem; /* Espaçamento interno */
+  border: none; /* Remove a borda */
+  background: transparent; /* Fundo transparente */
+  color: var(--text-muted); /* Cor do ícone desativada */
+  cursor: pointer; /* Cursor de ponteiro */
+  border-radius: 0.375rem; /* Bordas arredondadas */
+  transition: all 0.2s ease; /* Transição suave para hover */
+  display: flex; /* Layout flexível */
+  align-items: center; /* Alinha os ícones verticalmente */
+  justify-content: center; /* Centraliza os ícones horizontalmente */
 }
 
 .icon-button:hover {
-  background: rgba(99, 102, 241, 0.1);
-  color: var(--primary);
+  background: rgba(99, 102, 241, 0.1); /* Fundo sutil ao passar o mouse */
+  color: var(--primary); /* Altera a cor do ícone */
 }
 
-/* Task Details */
+/*
+  ==============================
+  TASK DETAILS
+  ==============================
+  Estiliza os detalhes de uma tarefa.
+*/
 .task-details {
-  padding: 2.5rem;
-  background: var(--surface);
-  border-radius: 1.5rem;
+  background: var(--surface); /* Fundo claro */
+  border-radius: 1rem; /* Bordas arredondadas */
+  padding: 2rem; /* Espaçamento interno */
+  box-shadow: var(--shadow-md); /* Sombra média */
 }
 
 .task-details h2 {
-  font-size: 1.875rem;
-  margin-bottom: 2rem;
-  color: var(--primary);
+  color: var(--primary); /* Cor do título */
+  font-size: 1.5rem; /* Tamanho do título */
+  font-weight: 700; /* Negrito para destaque */
+  margin-bottom: 1.5rem; /* Espaço abaixo do título */
+  padding-bottom: 0.75rem; /* Espaçamento interno */
+  border-bottom: 2px solid var(--border); /* Borda inferior */
 }
 
 .task-details p {
-  margin-bottom: 1.5rem;
-  font-size: 1.125rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  margin-bottom: 1rem; /* Espaço abaixo de cada parágrafo */
+  display: flex; /* Layout flexível */
+  align-items: center; /* Alinha os elementos verticalmente */
+  gap: 0.5rem; /* Espaçamento entre os elementos */
+  color: var(--text); /* Cor do texto */
 }
 
-/* Responsive Design */
+.task-details strong {
+  color: var(--text-muted); /* Cor do texto secundário */
+  min-width: 100px; /* Largura mínima para alinhamento */
+}
+
+.icon-completed {
+  color: var(--success); /* Ícone de sucesso */
+}
+
+.icon-pending {
+  color: var(--warning); /* Ícone de aviso */
+}
+
+.icon-error {
+  color: var(--error); /* Ícone de erro */
+}
+
+/*
+  ==============================
+  RESPONSIVE DESIGN
+  ==============================
+  Adapta o layout para dispositivos menores.
+*/
 @media (max-width: 640px) {
-  body {
-    padding: 1rem;
-  }
-
-  .container {
-    padding: 1.5rem;
-    border-radius: 1rem;
-  }
-
-  .header h1 {
-    font-size: 2rem;
-  }
-
   .task-form {
-    flex-direction: column;
+    flex-direction: column; /* Organiza os campos verticalmente */
   }
 
   .form-button {
-    padding: 0.875rem 1.5rem;
-    justify-content: center;
+    width: 100%; /* Botão ocupa toda a largura */
+  }
+
+  .filters {
+    flex-wrap: wrap; /* Permite que os botões quebrem linha */
+    justify-content: center; /* Centraliza os botões */
   }
 
   .task-item {
-    padding: 1rem;
+    flex-direction: column; /* Organiza os elementos verticalmente */
+    align-items: flex-start; /* Alinha os elementos à esquerda */
   }
 
   .task-actions {
-    opacity: 1;
+    width: 100%; /* Ações ocupam toda a largura */
+    justify-content: flex-end; /* Alinha as ações à direita */
+    padding-top: 0.5rem; /* Espaçamento acima das ações */
+    margin-top: 0.5rem; /* Espaço abaixo das ações */
+    border-top: 1px solid var(--border); /* Borda superior */
   }
 }
 
-/* Animation Enhancements */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/*
+  ==============================
+  RETURN
+  ==============================
+*/
+
+/* Estilo do container do botão de retorno */
+.return-button-container {
+  margin-bottom: 1.5rem; /* Espaçamento abaixo do botão */
 }
 
-/* Status Badge */
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  background: var(--background);
-  font-weight: 500;
-  margin: 1rem 0;
+/* Estilo do botão de retorno */
+.return-button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
 }
 
-/* Detail Section */
-.detail-section {
-  padding: 1.5rem;
-  background: var(--background);
-  border-radius: 0.75rem;
-  margin-top: 1.5rem;
-}
-
-.detail-section h3 {
-  color: var(--text-muted);
-  font-size: 0.875rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-}
-
-.observation-text {
-  line-height: 1.6;
-  color: var(--text);
-  white-space: pre-wrap;
-}
-
-/* Empty State */
-.empty-state {
-  text-align: center;
-  padding: 3rem;
-  color: var(--text-muted);
+.return-button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
 }
