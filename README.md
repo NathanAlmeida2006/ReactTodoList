@@ -1,9 +1,5 @@
-```markdown
-# 📋 Gerenciador de Tarefas (To-Do List)
 
-O **Gerenciador de Tarefas** é uma aplicação web simples e responsiva para gerenciar tarefas diárias. Com ele, você pode criar, visualizar, editar, concluir e excluir tarefas. A aplicação também inclui recursos como filtros para exibir tarefas concluídas, pendentes ou todas, além de detalhes adicionais sobre cada tarefa.
-
----
+# 📋 To-Do List
 
 ## 📦 Estrutura do Projeto
 
@@ -38,21 +34,20 @@ Raiz do Projeto:
 ├── package.json            # 📦 Metadados e dependências do projeto
 └── README.md               # 📖 Documentação
 
----
+```
 
 ## 🚀 Como Executar o Projeto
 
 ### Pré-requisitos
 
-- Node.js (versão 16 ou superior)
-- npm ou yarn instalado
+- Node.js
+- npm instalado
 
 ### Passos para Execução
 
 1. **Clone o Repositório**
    ```bash
-   git clone https://github.com/seu-usuario/nome-do-projeto.git
-   cd nome-do-projeto
+   git clone https://github.com/NathanAlmeida2006/ReactTodoList.git
    ```
 
 2. **Instale as Dependências**
