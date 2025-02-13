@@ -6,19 +6,19 @@
 */
 :root {
   /* Cores principais */
-  --primary: #6366F1; /* Cor primária (ex.: botões, títulos) */
-  --primary-hover: #4F46E5; /* Cor primária ao passar o mouse */
-  --secondary: #818CF8; /* Cor secundária */
-  --background: #F9FAFB; /* Fundo da página */
-  --surface: #FFFFFF; /* Fundo de superfícies (ex.: cards, modais) */
+  --primary: #6366f1; /* Cor primária (ex.: botões, títulos) */
+  --primary-hover: #4f46e5; /* Cor primária ao passar o mouse */
+  --secondary: #818cf8; /* Cor secundária */
+  --background: #f9fafb; /* Fundo da página */
+  --surface: #ffffff; /* Fundo de superfícies (ex.: cards, modais) */
   --text: #111827; /* Cor do texto principal */
-  --text-muted: #6B7280; /* Cor do texto secundário ou desabilitado */
-  --border: #E5E7EB; /* Cor das bordas */
+  --text-muted: #6b7280; /* Cor do texto secundário ou desabilitado */
+  --border: #e5e7eb; /* Cor das bordas */
 
   /* Cores de status */
-  --success: #34D399; /* Sucesso (ex.: tarefa concluída) */
-  --warning: #FBBF24; /* Aviso (ex.: tarefa pendente) */
-  --error: #F87171; /* Erro (ex.: falha ao salvar) */
+  --success: #34d399; /* Sucesso (ex.: tarefa concluída) */
+  --warning: #fbbf24; /* Aviso (ex.: tarefa pendente) */
+  --error: #f87171; /* Erro (ex.: falha ao salvar) */
 
   /* Sombras */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05); /* Sombra pequena */
@@ -31,7 +31,7 @@
   margin: 0; /* Remove margens padrão */
   padding: 0; /* Remove preenchimentos padrão */
   box-sizing: border-box; /* Garante que as bordas e paddings não aumentem o tamanho dos elementos */
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; /* Define uma fonte moderna e legível */
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif; /* Define uma fonte moderna e legível */
 }
 
 /* Estilo básico do corpo da página */
@@ -94,7 +94,7 @@ body {
 
 .form-input {
   flex: 1; /* O campo de entrada ocupa o espaço disponível */
-  padding: 0.75rem 1rem; /* Espaçamento interno */
+  padding: 0.9rem 2rem; /* Espaçamento interno */
   border: 2px solid var(--border); /* Borda clara */
   border-radius: 0.5rem; /* Bordas arredondadas */
   font-size: 1rem; /* Tamanho da fonte */
@@ -175,40 +175,40 @@ body {
   ==============================
   TASK ITEM
   ==============================
-  Estiliza cada item da lista de tarefas.
+  Estiliza cada item da lista de tarefas como um cartão.
 */
-.task-item {
+.task-card {
   background: var(--surface); /* Fundo claro */
-  border-radius: 0.75rem; /* Bordas arredondadas */
-  padding: 1rem; /* Espaçamento interno */
+  border-radius: 1rem; /* Bordas arredondadas mais suaves */
+  padding: 1.5rem; /* Espaçamento interno maior */
   display: flex; /* Layout flexível */
-  align-items: center; /* Alinha os itens verticalmente */
+  flex-direction: column; /* Organiza os elementos verticalmente */
   gap: 1rem; /* Espaçamento entre os elementos */
-  box-shadow: var(--shadow-sm); /* Sombra leve */
-  transition: all 0.2s ease; /* Transição suave para hover */
+  box-shadow: var(--shadow-md); /* Sombra mais pronunciada */
+  transition: all 0.3s ease; /* Transição suave para hover */
   border: 1px solid var(--border); /* Borda clara */
 }
 
-.task-item:hover {
-  transform: translateY(-2px); /* Efeito de elevação */
-  box-shadow: var(--shadow-md); /* Sombra mais pronunciada */
+.task-card:hover {
+  transform: translateY(-4px); /* Efeito de elevação */
+  box-shadow: var(--shadow-lg); /* Sombra ainda mais pronunciada */
 }
 
-.task-item.completed {
+.task-card.completed {
   background: var(--background); /* Fundo mais claro para tarefas concluídas */
   border-color: var(--border); /* Borda clara */
 }
 
-.task-item.completed .task-title {
+.task-card.completed .task-title {
   color: var(--text-muted); /* Texto desativado */
   text-decoration: line-through; /* Risca o texto para indicar conclusão */
 }
 
 .task-checkbox {
-  width: 1.25rem; /* Largura do checkbox */
-  height: 1.25rem; /* Altura do checkbox */
+  width: 1.5rem; /* Largura maior do checkbox */
+  height: 1.5rem; /* Altura maior do checkbox */
   border: 2px solid var(--border); /* Borda clara */
-  border-radius: 0.375rem; /* Bordas arredondadas */
+  border-radius: 0.5rem; /* Bordas arredondadas mais suaves */
   cursor: pointer; /* Cursor de ponteiro */
   transition: all 0.2s ease; /* Transição suave para hover */
 }
@@ -219,24 +219,61 @@ body {
 }
 
 .task-title {
-  flex: 1; /* O título ocupa o espaço disponível */
+  font-size: 1.25rem; /* Tamanho maior para o título */
   color: var(--text); /* Cor do texto principal */
   text-decoration: none; /* Remove sublinhado */
-  font-weight: 500; /* Negrito para destaque */
+  font-weight: 600; /* Negrito para destaque */
+}
+
+.task-observation {
+  font-size: 0.9rem; /* Tamanho menor para a observação */
+  color: var(--text-muted); /* Cor mais suave */
+  margin-top: 0.5rem; /* Espaçamento acima da observação */
+  white-space: pre-wrap; /* Preserva quebras de linha e permite wrap */
+  word-wrap: break-word; /* Força quebra de palavras longas */
+  overflow-wrap: break-word; /* Garante que palavras longas quebrem */
+  max-width: 100%; /* Limita a largura máxima */
 }
 
 .task-actions {
   display: flex; /* Layout flexível */
-  gap: 0.5rem; /* Espaçamento entre as ações */
+  justify-content: flex-end; /* Alinha os botões à direita */
+  gap: 0.75rem; /* Espaçamento entre as ações */
+}
+
+.task-actions-left {
+  display: flex; /* Layout flexível */
+  align-items: center; /* Alinha verticalmente */
+  justify-content: flex-start; /* Alinha à esquerda */
+  margin-bottom: 0.5rem; /* Espaçamento abaixo do botão */
+}
+
+.complete-button {
+  background: transparent; /* Fundo transparente */
+  border: none; /* Remove borda */
+  cursor: pointer; /* Cursor de ponteiro */
+  color: var(--text-muted); /* Cor do ícone desativada */
+  transition: all 0.2s ease; /* Transição suave para hover */
+  padding: 0.5rem; /* Espaçamento interno */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+}
+
+.complete-button:hover {
+  background: rgba(99, 102, 241, 0.1); /* Fundo sutil ao passar o mouse */
+  color: var(--primary); /* Altera a cor do ícone */
+}
+
+.complete-button.completed {
+  color: var(--success); /* Cor verde para tarefas concluídas */
 }
 
 .icon-button {
-  padding: 0.5rem; /* Espaçamento interno */
+  padding: 0.75rem; /* Espaçamento interno maior */
   border: none; /* Remove a borda */
   background: transparent; /* Fundo transparente */
   color: var(--text-muted); /* Cor do ícone desativada */
   cursor: pointer; /* Cursor de ponteiro */
-  border-radius: 0.375rem; /* Bordas arredondadas */
+  border-radius: 0.5rem; /* Bordas arredondadas mais suaves */
   transition: all 0.2s ease; /* Transição suave para hover */
   display: flex; /* Layout flexível */
   align-items: center; /* Alinha os ícones verticalmente */
@@ -247,7 +284,6 @@ body {
   background: rgba(99, 102, 241, 0.1); /* Fundo sutil ao passar o mouse */
   color: var(--primary); /* Altera a cor do ícone */
 }
-
 /*
   ==============================
   TASK DETAILS
@@ -273,14 +309,24 @@ body {
 .task-details p {
   margin-bottom: 1rem; /* Espaço abaixo de cada parágrafo */
   display: flex; /* Layout flexível */
-  align-items: center; /* Alinha os elementos verticalmente */
+  align-items: flex-start; /* Alinha os elementos no topo */
   gap: 0.5rem; /* Espaçamento entre os elementos */
   color: var(--text); /* Cor do texto */
+  flex-wrap: wrap; /* Permite quebra de linha */
+  word-break: break-word; /* Força quebra de palavras longas */
+  overflow-wrap: break-word; /* Garante que palavras longas quebrem */
 }
 
 .task-details strong {
   color: var(--text-muted); /* Cor do texto secundário */
   min-width: 100px; /* Largura mínima para alinhamento */
+}
+
+/* Estilo específico para o conteúdo do parágrafo */
+.task-details p span {
+  flex: 1; /* Permite que o conteúdo ocupe o espaço disponível */
+  min-width: 0; /* Permite que o texto quebre */
+  word-wrap: break-word; /* Quebra palavras longas */
 }
 
 .icon-completed {

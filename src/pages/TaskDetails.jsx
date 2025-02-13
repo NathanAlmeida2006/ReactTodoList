@@ -52,6 +52,11 @@ export default function TaskDetails() {
         {/* Título da seção */}
         <h2>Detalhes da Tarefa</h2>
 
+        {/* Exibe o id da tarefa */}
+        <p>
+          <strong>Id:</strong> {task.id}
+        </p>
+
         {/* Exibe o título da tarefa */}
         <p>
           <strong>Título:</strong> {task.title}
@@ -76,7 +81,9 @@ export default function TaskDetails() {
         {/* Exibe a observação da tarefa, ou uma mensagem padrão se não houver observação */}
         <p>
           <strong>Observação:</strong>{" "}
-          {task.observation ? task.observation : "Nenhuma observação"}
+          <span>
+            {task.observation ? task.observation : "Nenhuma observação"}
+          </span>
         </p>
       </div>
     </div>

@@ -43,10 +43,20 @@ export function TaskProvider({ children }) {
    */
   const addTask = async (task) => {
     try {
+      // Validação do título antes de enviar para a API
+      if (!task.title?.trim()) {
+        throw new Error("O título da tarefa não pode estar vazio");
+      }
+
       const response = await api.post("/todos", task); // Requisição POST para criar uma nova tarefa
       setTasks([...tasks, response.data]); // Adiciona a nova tarefa ao estado local
+      return { success: true }; // Retorna sucesso como feedback
     } catch (error) {
       console.error("Erro ao adicionar tarefa:", error); // Trata possíveis erros durante a requisição
+      return {
+        success: false,
+        message: error.response?.data?.message || error.message, // Retorna mensagem de erro para feedback
+      };
     }
   };
 
@@ -57,14 +67,24 @@ export function TaskProvider({ children }) {
    */
   const editTask = async (id, updatedTask) => {
     try {
+      // Validação também na edição
+      if (!updatedTask.title?.trim()) {
+        throw new Error("O título da tarefa não pode estar vazio");
+      }
+
       await api.put(`/todos/${id}`, updatedTask); // Requisição PUT para atualizar a tarefa
       setTasks(
-        tasks.map((task) =>
-          task.id === id ? { ...task, ...updatedTask } : task // Atualiza a tarefa no estado local
+        tasks.map(
+          (task) => (task.id === id ? { ...task, ...updatedTask } : task) // Atualiza a tarefa no estado local
         )
       );
+      return { success: true }; // Retorna sucesso como feedback
     } catch (error) {
       console.error("Erro ao editar tarefa:", error); // Trata possíveis erros durante a requisição
+      return {
+        success: false,
+        message: error.response?.data?.message || error.message, // Retorna mensagem de erro para feedback
+      };
     }
   };
 
@@ -77,8 +97,13 @@ export function TaskProvider({ children }) {
     try {
       await api.delete(`/todos/${id}`); // Requisição DELETE para remover a tarefa
       setTasks(tasks.filter((task) => task.id !== id)); // Remove a tarefa do estado local
+      return { success: true }; // Retorna sucesso como feedback
     } catch (error) {
       console.error("Erro ao excluir tarefa:", error); // Trata possíveis erros durante a requisição
+      return {
+        success: false,
+        message: error.response?.data?.message || error.message, // Retorna mensagem de erro para feedback
+      };
     }
   };
 
@@ -92,12 +117,18 @@ export function TaskProvider({ children }) {
       const task = tasks.find((task) => task.id === id); // Encontra a tarefa pelo ID
       await api.patch(`/todos/${id}`, { completed: !task.completed }); // Requisição PATCH para atualizar o status
       setTasks(
-        tasks.map((task) =>
-          task.id === id ? { ...task, completed: !task.completed } : task // Atualiza o status no estado local
+        tasks.map(
+          (task) =>
+            task.id === id ? { ...task, completed: !task.completed } : task // Atualiza o status no estado local
         )
       );
+      return { success: true }; // Retorna sucesso como feedback
     } catch (error) {
       console.error("Erro ao atualizar status:", error); // Trata possíveis erros durante a requisição
+      return {
+        success: false,
+        message: error.response?.data?.message || error.message, // Retorna mensagem de erro para feedback
+      };
     }
   };
 
